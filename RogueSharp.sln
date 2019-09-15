@@ -1,0 +1,23 @@
+﻿Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+# SharpDevelop 3.2.1.6466
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogueSharp", "RogueSharp.csproj", "{4ACC9133-6C21-46A8-9A44-7032B4282CEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = Release|AnyCPU
+		Release|AnyCPU = Release|AnyCPU
+		Release|x86 = Release|x86
+		Debug|AnyCPU = Debug|AnyCPU
+		Debug|x86 = Debug|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = Release|AnyCPU
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Debug|x86.Build.0 = Debug|x86
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Debug|x86.ActiveCfg = Debug|x86
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Release|x86.Build.0 = Release|x86
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Release|AnyCPU.Build.0 = Release|AnyCPU
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Release|x86.ActiveCfg = Release|x86
+		{4ACC9133-6C21-46A8-9A44-7032B4282CEB}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
+	EndGlobalSection
+EndGlobal
