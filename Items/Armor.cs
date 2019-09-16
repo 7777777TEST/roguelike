@@ -21,7 +21,6 @@ namespace Rogue{
 				if(unequip(ref actor)){
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+Name);
-					actor.status.armor-=status.armor;
 					rm(Flags.Equip);
 				}
 				return true;
@@ -29,7 +28,6 @@ namespace Rogue{
 				if(armor.unequip(ref actor)){
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+armor.Name);
-					actor.status.armor-=armor.status.armor;
 				}else{
 					return false;
 				}
@@ -38,7 +36,6 @@ namespace Rogue{
 				status.armor=-System.Math.Abs(status.armor);
 			}
 			set(Flags.Equip);
-			actor.status.armor+=status.armor;
 			Item target=this;
 			actor.Equipment(Actor.Slot.Armor,ref target);
 			if(actor.status.type==Actor.Type.Hero){

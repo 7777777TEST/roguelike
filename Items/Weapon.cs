@@ -20,10 +20,6 @@ namespace Rogue{
 			Item weapon=actor.GetEquipment(Actor.Slot.Weapon);
 			if(weapon==this){
 				if(unequip(ref  actor)){
-					int origin=actor.MaxStr;
-					actor.MaxStr=origin-status.atk;
-					origin=actor.Str;
-					actor.Str=origin-status.atk;
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+Name);
 					rm(Flags.Equip);
@@ -31,10 +27,6 @@ namespace Rogue{
 				return true;
 			}else if(weapon!=null){
 				if(weapon.unequip(ref actor)){
-					int origin=actor.MaxStr;
-					actor.MaxStr=origin-weapon.status.atk;
-					origin=actor.Str;
-					actor.Str=origin-weapon.status.atk;
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+weapon.Name);
 				}else{
@@ -44,8 +36,6 @@ namespace Rogue{
 			set(Flags.Equip);
 			Item target=this;
 			actor.Equipment(Actor.Slot.Weapon,ref target);
-			actor.MaxStr+=status.atk;
-			actor.Str+=status.atk;
 			if(actor.status.type==Actor.Type.Hero){
 				set(Flags.Identified);
 				Logger.Post("You are now wearing "+Name);

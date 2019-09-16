@@ -9,8 +9,30 @@ namespace Rogue{
 			new Status(){name="mimic",exp=0,level=4,armor=10,hp=50,maxhp=50,str=3,maxstr=3,default_flag=0,ch='M',speed=1,attack=null},
 			new Status(){name="yeti",exp=0,level=9,armor=10,hp=50,maxhp=50,str=3,maxstr=3,default_flag=0,ch='Y',speed=1,attack=(ref Actor actor)=>{
 				if(random.Next(10)==1){
+					Logger.Post("yeti iced you.");
+					actor.addEffect(Flags.NoCommand,5);
+				}
+			}},
+			new Status(){name="quagga",exp=0,level=6,armor=5,hp=20,maxhp=20,str=13,maxstr=13,default_flag=0,ch='Q',speed=1,attack=(ref Actor actor)=>{
+				if(random.Next(10)==1){
 					Logger.Post("yeyi iced you.");
 					actor.addEffect(Flags.NoCommand,5);
+				}
+			}},
+			new Status(){name="wizard",exp=0,level=6,armor=10,hp=10,maxhp=10,str=3,maxstr=3,default_flag=0,ch='W',speed=1,attack=(ref Actor actor)=>{
+				if(random.Next(10)>5){
+					Item item=null;
+					if(actor.GetEquipment(Slot.Weapon)!=null){
+						item=actor.GetEquipment(Slot.Weapon);
+					}else if(actor.GetEquipment(Slot.Armor)!=null){
+						item=actor.GetEquipment(Slot.Armor);
+					}else if(actor.GetEquipment(Slot.Ring)!=null){
+						item=actor.GetEquipment(Slot.Ring);
+					}else{
+						return;
+					}
+					item.set(Item.Flags.Cursed);
+					Logger.Post("Your "+item.status.name+" is cursed.");
 				}
 			}},
 		};

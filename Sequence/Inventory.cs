@@ -108,9 +108,7 @@ namespace Rogue{
 					Sequence.Push(new ZapState(ref world.player,ref item));
 					return;
 				case "Drop":
-					if(world.player.GetEquipment(Actor.Slot.Armor)==item||
-					world.player.GetEquipment(Actor.Slot.Weapon)==item||
-					world.player.GetEquipment(Actor.Slot.Ring)==item){
+					if(item.get(Item.Flags.Equip)){
 						if(!item.unequip(ref world.player)){
 							break;
 						}

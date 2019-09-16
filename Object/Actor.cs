@@ -77,7 +77,7 @@ namespace Rogue{
 		}
 		public int Str{
 			get{
-				return status.str;
+				return status.str+(GetEquipment(Slot.Weapon)==null?0:GetEquipment(Slot.Weapon).status.atk);
 			}
 			set{
 				if(value>status.maxstr)status.str=status.maxstr;
@@ -120,7 +120,7 @@ namespace Rogue{
 				case Item.Type.Food:
 				case Item.Type.Weapon:
 					for(int i=0;i<Items.Count;i++){
-						if(Items[i].status==item.status){
+						if(Items[i].status.type==item.status.type&&Items[i].status.id==item.status.id){
 							int flag=item.Flag;
 							if(Items[i].get(Item.Flags.Identified))
 								item.set(Item.Flags.Identified);
@@ -145,8 +145,13 @@ namespace Rogue{
 			if(i<0)return null;
 			if(item.get(Item.Flags.Equip)){
 				Actor target=this;
-				item.Use(ref target);
-				if(item.get(Item.Flags.Equip))return null;
+				if(item.unequip(ref target)){
+					if(status.type==Actor.Type.Hero)
+						Logger.Post("You used to be wearing "+item.Name);
+					item.rm(Item.Flags.Equip);
+				}else{
+					return null;
+				}
 			}
 			if(Items[i].Count>1){
 				if(Items[i].Count==1){

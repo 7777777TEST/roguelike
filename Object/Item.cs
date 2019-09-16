@@ -23,28 +23,9 @@ namespace Rogue{
 			Amulet
 		}
 		public struct Status{
-			public static bool operator ==(Status s1,Status s2){
-				return s1.type==s2.type&&s1.id==s2.id&&s1.lv==s2.lv;
-			}
-			public static bool operator !=(Status s1,Status s2){
-				return s1.type!=s2.type||s1.id!=s2.id||s1.lv!=s2.lv;
-			}
 			public Type type;
 			public int id,hp,food,atk,range,extval,lv,used,armor;
 			public string name;
-			public override bool Equals(object obj)
-			{
-				Status status= (Status)obj;
-				return type == status.type && id == status.id && lv == status.lv;
-			}
-			public override int GetHashCode()
-			{
-				var hashCode = -951334205;
-				hashCode = hashCode * -1521134295 + type.GetHashCode();
-				hashCode = hashCode * -1521134295 + id.GetHashCode();
-				hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
-				return hashCode;
-			}
 		}
 		public abstract bool Use(ref Actor actor);
 		public string Name{

@@ -23,12 +23,6 @@ namespace Rogue{
 				if(unequip(ref actor)){
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+Name);
-					int origin=actor.MaxStr;
-					actor.MaxStr=origin-status.atk;
-					origin=actor.Str;
-					actor.Str=origin-status.atk;
-					origin=actor.MaxHp;
-					actor.Str=origin-status.hp;
 					rm(Flags.Equip);
 				}
 				return true;
@@ -36,27 +30,15 @@ namespace Rogue{
 				if(ring.unequip(ref actor)){
 					if(actor.status.type==Actor.Type.Hero)
 					Logger.Post("You used to be wearing "+ring.Name);
-					int origin=actor.MaxStr;
-					actor.MaxStr=origin-ring.status.atk;
-					origin=actor.Str;
-					actor.Str=origin-ring.status.atk;
-					origin=actor.MaxHp;
-					actor.Str=origin-ring.status.hp;
 				}else{
 					return false;
 				}
 			}
 			if(get(Flags.Cursed)){
 				status.atk=-System.Math.Abs(status.atk);
-				status.hp=-System.Math.Abs(status.hp);
 				status.armor=-System.Math.Abs(status.armor);
 			}
 			set(Flags.Equip);
-			actor.MaxHp+=status.hp;
-			actor.Hp+=(status.hp/2);
-			actor.MaxStr+=status.atk;
-			actor.Str+=status.atk;
-			actor.status.armor+=status.armor;
 			Item target=this;
 			actor.Equipment(Actor.Slot.Ring,ref target);
 			if(actor.status.type==Actor.Type.Hero){

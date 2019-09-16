@@ -12,7 +12,11 @@ namespace Rogue{
 				hit=0;
 				Logger.Post(actor.status.name+" missed "+target.status.name);
 			}else{
-				hit=(int)(hit*System.Math.Pow(0.9735,target.status.armor));
+				int armor=actor.GetEquipment(Actor.Slot.Armor)==null?0:actor.GetEquipment(Actor.Slot.Armor).status.armor;
+				armor+=actor.GetEquipment(Actor.Slot.Ring)==null?0:actor.GetEquipment(Actor.Slot.Ring).status.armor;
+				hit+=actor.GetEquipment(Actor.Slot.Weapon)==null?0:actor.GetEquipment(Actor.Slot.Weapon).status.atk;
+				hit+=actor.GetEquipment(Actor.Slot.Ring)==null?0:actor.GetEquipment(Actor.Slot.Ring).status.atk;
+				hit=(int)(hit*System.Math.Pow(0.9735,(target.status.armor+armor)));
 				actor.attack(ref target);
 				target.Hp=target.Hp-hit;
 				if(!target.Dead)

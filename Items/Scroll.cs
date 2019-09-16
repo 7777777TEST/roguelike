@@ -44,11 +44,7 @@ namespace Rogue{
 				case "enchant armor":
 					Item armor=actor.GetEquipment(Actor.Slot.Armor);
 					if(armor!=null){
-						if(armor.get(Flags.Cursed)){
-							armor.rm(Flags.Cursed);
-						}else{
-							armor.set(Flags.Blessed);
-						}
+						armor.set(Flags.Blessed);
 					}
 					break;
 				case "enchant weapon":
